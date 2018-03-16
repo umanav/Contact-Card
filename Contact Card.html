@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="Contact Card.css">
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+    </script>
+    <script>
+        $(document).ready(function(){   
+            $("form").submit(function(){                           
+                return false;
+            });
+            $("[type = submit]").click(function(){
+                var name = $('#FirstName').val()+ " " + $('#LastName').val()
+                var hidden_description = $('#Description').val()
+                $("#contact").append("<div class='contact_card'>"+"<h2>"+ name+"</h2>"+"<p>"+ "Click here to see the description"+"</p>"+"<p class='see_description' style='display: none'>"+hidden_description+"</p>"+"</div>"); 
+            });
+        });
+        $(document).on('click','.contact_card', function(){
+            $(".contact_card").children().hide();
+            $(".see_description").show();    
+        });
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="form">
+            <form action="">
+                <p>First Name: <input type="text" id="FirstName" value="Victor"> </p> 
+                <p>Last Name: <input type="text" id="LastName" value="Chanto"> </p>
+                <textarea id="Description" cols="30" rows="10"></textarea>
+                <input type="submit" name="submit" value="Add User">
+            </form>
+        </div>
+        <div id="contact">
+
+        </div>
+    </div>
+
+    
+</body>
+</html>
+
+
+
+
+<!-- var result = $("form").serializeArray(); //saves the input in an array
+var first_N = result[0].value;
+var last_N = result[1].value;
+console.log(name);
+$(".contact_card").append(first_N);
+$(".contact_card").append(last_N);
+$(".contact_card").append("click here to see more");
+console.log(result[0].value);
+$.each( result, function(index, value ){ //navigates through the array
+    // $(".contact_card").append("value");
+}); -->
+
+
+
+
